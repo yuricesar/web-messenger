@@ -26,15 +26,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Install Dependencies
-      run: npm install
+      run: sudo npm install
       
     - name: Build Project
-      run: npm run build
+      run: sudo npm run build
     
     - name: Stop PM2
-      run: pm2 stop nodedeploy
+      run: sudo pm2 stop nodedeploy
       if: ${{failure()}}
     
     - name: Start PM2
-      run: pm2 start server.js --name nodedeploy
+      run: sudo pm2 start server.js --name nodedeploy
       
